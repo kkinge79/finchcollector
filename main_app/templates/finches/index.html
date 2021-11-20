@@ -2,23 +2,18 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/cat-index.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/finch-index.css' %}"/>
 {% endblock %}
 
 {% block content %}
 
 <section class="page-header">
   <h1>Finch List</h1>
-  <img src="{% static 'images/cool-cat.svg' %}" alt="A cool finch" />
-  <img src="{% static 'images/happy-cat.svg' %}" alt="A happy finch" />
-  <img src="{% static 'images/teacup-cat.svg' %}" alt="A finch in a tree" />
-  <img src="{% static 'images/cat-in-box.svg' %}" alt="A finch in the 7th ring of hell" />
 </section>
-
 <section class="card-container">
   {% for finch in finches %}
     <div class="card">
-    <a href="/finches/{{ finch.id }}"
+    <a href="{% url 'finches_detail' finch.id%}"
       <div class="card-content">
         <div class="card-img-container">
           <img 
@@ -27,11 +22,7 @@
           >
         </div>
         <h2 class="card-title">{{ finch.name }}</h2>
-        {% if finch.age > 0 %}
-          <p>A {{ finch.color }}{{ finch.sex }} finch</p>
-        {% else %}
-          <p>A {{ finch.color }} finch.</p>
-        {% endif %}
+          <p>A {{ finch.color }}, {{ finch.sex }} finch</p>
         <p><small>{{ finch.description }}</small></p>
     </a>
       </div>

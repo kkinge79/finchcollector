@@ -12,21 +12,16 @@
 {% block content %}
 
 <section class="finch-container">
-  {% comment %} <div class="finch-img">
-    <img 
-      src="{% static '' %}" 
-      alt=""
-    >
-  </div> {% endcomment %}
   <div class="finch-details">
     <h2 class="card-title">{{ finch.name }}</h2>
-      {% if finch.age > 0 %}
-        <p>A {{ finch.color }}{{ finch.sex }} finch</p>
-      {% else %}
-        <p>A {{ finch.color }} finch.</p>
-      {% endif %}
+        <p>A {{ finch.color }}, {{ finch.sex }} finch</p>
         <p><small>{{ finch.description }}</small></p>
     </a>
+  </div>
+  <div class="finch-actions">
+    <a href="{% url 'finches_update' finch.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'finches_delete' finch.id %}" class="btn danger">Delete</a>
+  </div>
 </section>
 
 {% endblock %}
